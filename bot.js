@@ -1,15 +1,16 @@
 const http = require('http');
 const express = require('express');
 const app = express();
-app.get("/", (request, response) => {
-  console.log(Date.now() + " Ping Received");
-  response.sendStatus(200);
-});
+const {resolve, join} = require('path')
 app.listen(process.env.PORT);
 setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
 }, 280000);
-//
+// Website
+app.get('/', (req, res) => {
+  res.sendFile(resolve(join(__dirname, "./views/index.html")));
+});
+// Bot
 const Discord = require("discord.js");
 const Util = require('discord.js')
 const fs = require('fs')
@@ -19,6 +20,7 @@ const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const youtube = new YouTube(process.env.GOOGLE_TOKEN);
 const Bot = new Discord.Client();
+Bot.config = require("./config.js");
 Bot.points = new Enmap({name: "points"});
 Bot.login(process.env.TOKEN)
 
@@ -44,10 +46,53 @@ fs.readdir("./commands/", (err, files) => {
     if (!file.endsWith(".js")) return;
     let props = require(`./commands/${file}`);
     let commandName = file.split(".")[0];
-    console.log(`Attempting to load command ${commandName}`);
+    console.log(`Loaded command: ${commandName} ✓ `);
     Bot.commands.set(commandName, props);
   });
 });
+// Verify
+const config = require('./config.json')
+
+const completemsg = `Thank you for agreeing to the rules and code of conduct! You are now a verified member of the guild! \nFeel free to choose what roles you’d like [here](https://goo.gl/forms/ZE1b6vlcDnu5lAFD3), introduce yourself or check out a our other channels. \n\n**Your unique token is your signature that you have read and understood our rules.**\n`
+
+const shortcode = (n) => {
+    const possible = 'ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghjklmnopqrstuvwxyz0123456789'
+    let text = ''
+    for (var i = 0; i < n + 1; i++) text += possible.charAt(Math.floor(Math.random() * possible.length))
+    return text;
+}
+Bot.on('guildMemberAdd', (member) => {
+    if (member.user.bot) return;
+    const token = shortcode(8)
+    const readme = `**PLEASE READ TO GET FULL ACESS TO THE SERVER**`
+    const welcomemsg = `Welcome to the Server! We hope you find a home here! Check out the \`#recruitment\` channel to make sure that we jive, and as long as our goals are similar, then there’s a place at the table waiting for you. \n\n If you accept the code of conduct, please verify your agreement by replying to **this DM** with the verification phrase: \n\n\`I agree to abide by all rules. My token is ${token}.\`\n\n **This message is case-sensitive, and please include the period at the end! ** \n\nQuestions? Get at a staff member in the server or via DM.`
+    console.log(`${member.user.username}#${member.user.discriminator} joined! CODE: "${token}"`)
+    member.send(readme)
+    member.send(welcomemsg)
+    member.user.token = token
+})
+
+
+const verifymsg = 'I agree to abide by all rules. My token is {token}.'
+
+Bot.on('message', (message) => {
+    if (message.author.bot || !message.author.token || message.channel.type !== `dm`) return
+    if (message.content !== (verifymsg.replace('{token}', message.author.token))) return
+    message.channel.send({
+        embed: {
+            color: Math.floor(Math.random() * (0xFFFFFF + 1)),
+            description: completemsg,
+            timestamp: new Date(),
+            footer: {
+                text: `Verification Success`
+            }
+        }
+    })
+  let roleid = "497948891707342848";
+    Bot.guilds.get(config.guild).member(message.author).addRole(roleid) // ensure this is a string in the config ("")
+        .then(console.log(`TOKEN: ${message.author.token} :: Role ${config.role} added to member ${message.author.id}`))
+        .catch(console.error)
+})
 // Points
 Bot.on("message", message => {
   // As usual, ignore all bots.
@@ -77,7 +122,15 @@ Bot.on("message", message => {
       Bot.points.set(key, curLevel, "level");
     }
   }
-  // Rest of message handler
+  // Alias Handler
+  Bot.logger = require("./modules/Logger");
+  Bot.aliases = new Enmap();
+  // Generate a cache of client permissions for pretty perm names in commands.
+  Bot.levelCache = {};
+  for (let i = 0; i < Bot.config.permLevels.length; i++) {
+    const thisLevel = Bot.config.permLevels[i];
+    Bot.levelCache[thisLevel.name] = thisLevel.level;
+  }
 });
 // moozik
 

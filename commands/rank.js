@@ -2,9 +2,9 @@ const { Canvas } = require("canvas-constructor"); // You can't make images witho
 const { resolve, join } = require("path"); // This is to get a font file.
 const { Attachment } = require("discord.js"); // This is to send the image via discord.
 const { get } = require("snekfetch"); // This is to fetch the user avatar and convert it to a buffer.
-Canvas.registerFont(resolve(join(__dirname, "../fonts/whiteney.ttf")), "Discord");
 const imageUrlRegex = /\?size=2048$/g;
-exports.run = async (Bot, message, args) => {
+Canvas.registerFont(resolve(join(__dirname, "../fonts/whiteney.ttf")), "Discord");
+exports.run = async (Bot, message, args, member, level) => {
   // This will check to see if the command was ran in a guild instead of a DM.
   if (message.guild) {
     // This creates a "key" for enmaps Key/Value system.
@@ -35,47 +35,30 @@ const { body: avatar } = await get(member.user.displayAvatarURL.replace(imageUrl
 // The reason for the displayName length check, is we don't want the name of the user going outside
 // the box we're going to be making later, so we grab all the characters from the 0 index through
 // to the 17th index and cut the rest off, then append `...`.
-const name = member.displayName.length > 20 ? member.displayName.substring(0, 17) + "..." : member.displayName;
-    return new Canvas(400, 180)
-  // Create the Blurple rectangle on the right side of the image.
+//const name = member.displayName.length > 20 ? member.displayName.substring(0, 17) + "..." : member.displayName;
+  return new Canvas(400, 180)
   .setColor("#7289DA")
   .addRect(84, 0, 316, 180)
   .setColor("#2C2F33")
   .addRect(0, 0, 84, 180)
   .addRect(169, 26, 231, 46)
   .addRect(224, 108, 176, 46)
-   // Create a shadow effect for the avatar placement.
   .setShadowColor("rgba(22, 22, 22, 1)") // This is a nice colour for a shadow.
   .setShadowOffsetY(5) // Drop the shadow by 5 pixels.
   .setShadowBlur(10) // Blur the shadow by 10.
   .save() // We should save the instance again.
-  // This circle is 2 pixels smaller in the radius to prevent a pixel border.
-  .addCircle(84, 90, 62)
-  // We need to put something here next.
-    .addRoundImage(avatar, 20, 26, 128, 128, 64)
-  // Now we restore the canvas' previous state.
+  .addRoundImage(avatar, 20, 26, 128, 128, 64)
   .restore()
-   // This creates a rounded corner rectangle, you must use restore to
-  // add new elements afterwards.
   .createBeveledClip(20, 138, 128, 32, 5)
   .setColor("#23272A")
   .addRect(20, 138, 128, 32)
   .restore()
-   // Add all of the text for the template.
-  // Let's center the text
   .setTextAlign("center")
-  // I'm using a custom font, which I will show you how to add next.
   .setTextFont("10pt Discord")
-  // Set the colour to white, since we have a dark background for all the text boxes.
   .setColor("#FFFFFF")
-  // Add the name variable.
-  .addText(message.author.username, 285, 54)
-  // Using template literals, you can add text and variables, we're applying the toLocaleString()
-  // to break up the number into a nice readable format.
+  .addText('AndyIsCool5463', 285, 54)
   .addText(`Level: ${level.toLocaleString()}`, 84, 159)
-  // Now we want to align the text to the left.
   .setTextAlign("left")
-  // Let's add all the points!
   .addText(`Score: ${points.toLocaleString()}`, 241, 136)
   .toBuffer()
 }
