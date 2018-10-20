@@ -5,6 +5,7 @@ const config = require("../config.json")
 const verifymsg = 'I agree to abide by all rules. My token is {token}.'
 const completemsg = `Thank you for agreeing to the rules and code of conduct! You are now a verified member of the guild! \nFeel free to choose what roles you’d like, introduce yourself or check out a our other channels. \n\n**Your unique token is your signature that you have read and understood our rules.**\n`
 module.exports = (Bot, message, member) => {
+  
   // Ignore all bots
   if (message.author.bot) return;
   if (message.channel === "dm") return;

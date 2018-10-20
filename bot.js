@@ -1,3 +1,4 @@
+// Webserver
 const http = require('http');
 const express = require('express');
 const app = express();
@@ -6,10 +7,8 @@ app.listen(process.env.PORT);
 setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
 }, 280000);
-// Website
-app.get('/', (req, res) => {
-  res.sendFile(resolve(join(__dirname, "./views/index.html")));
-});
+
+
 // Bot
 const Discord = require("discord.js");
 const Util = require('discord.js')
@@ -23,6 +22,27 @@ const Bot = new Discord.Client();
 Bot.config = require("./config.js");
 Bot.points = new Enmap({name: "points"});
 Bot.login(process.env.TOKEN)
+
+
+
+
+// Website
+var bodyParser = require('body-parser')
+const stringifyObject = require('stringify-object');
+var path = __dirname + '/views/';
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+Bot.APImsg = new Enmap({name: "APImsg"});
+app.get('/', (req, res) => {
+  res.sendFile(resolve(join(__dirname, "./views/index.html")));
+});
+let uuid = "144314d2-e2e0-4c62-a861-c5d6884ebe9c";
+app.post('/discord', urlencodedParser, function (req, res) {
+    if (!req.body) return res.sendStatus(400)
+  console.log(req.body)
+  Bot.APImsg.set(req.body.author, req.body.msg)
+  res.sendStatus(200)
+});
+
 
 
 // Command Handler
@@ -39,7 +59,7 @@ fs.readdir("./events/", (err, files) => {
 });
  
 Bot.commands = new Enmap();
- 
+Bot.permission = new Enmap();
 fs.readdir("./commands/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
@@ -306,3 +326,5 @@ function play(guild, song) {
 
 	serverQueue.textChannel.send(`🎶 Start playing: **${song.title}**`);
 }
+
+
