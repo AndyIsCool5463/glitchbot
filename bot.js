@@ -1,3 +1,4 @@
+console.log("OK")
 // Webserver
 const http = require('http');
 const express = require('express');
@@ -25,8 +26,7 @@ Bot.login(process.env.TOKEN)
 
 
 
-
-// Website
+// Websitem
 var bodyParser = require('body-parser')
 const stringifyObject = require('stringify-object');
 var path = __dirname + '/views/';
@@ -35,16 +35,28 @@ Bot.APImsg = new Enmap({name: "APImsg"});
 app.get('/', (req, res) => {
   res.sendFile(resolve(join(__dirname, "./views/index.html")));
 });
-let uuid = "144314d2-e2e0-4c62-a861-c5d6884ebe9c";
+let uuid = "44314d2-e2e0-4c62-a861-c5d6884ebe9c";
+
 app.post('/discord', urlencodedParser, function (req, res) {
     if (!req.body) return res.sendStatus(400)
+  if(req.body.uuid != uuid) return res.sendStatus(403);
   console.log(req.body)
   Bot.APImsg.set(req.body.author, req.body.msg)
   res.sendStatus(200)
+  if(req.body.user_generated_msg == 'true') {
+    console.log(req.body.user_generated_msg)
+      return  user_generated(req.body.author, req.body.msg, req.body.channels)
+  } else myFunct(req.body.author, req.body.msg, req.body.channels) 
 });
-
-
-
+function user_generated(Rauthor, Rmsg, Rchannel) {
+      var test = Bot.channels.find(channel => channel.name === Rchannel)          
+           test.send(Rmsg);    
+}
+function myFunct(Rauthor, Rmsg, Rchannel) {
+       var test = Bot.channels.find(channel => channel.name === Rchannel)
+          
+           test.send(`**${Rauthor}** has sent the message: ${Bot.APImsg.get(Rauthor)}`);       
+  }
 // Command Handler
 console.log(prefix)
 // Command Handler
@@ -57,7 +69,8 @@ fs.readdir("./events/", (err, files) => {
     Bot.on(eventName, event.bind(null, Bot));
   });
 });
- 
+
+
 Bot.commands = new Enmap();
 Bot.permission = new Enmap();
 fs.readdir("./commands/", (err, files) => {
@@ -260,7 +273,7 @@ ${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}
 			return msg.channel.send('▶ Resumed the music for you!');
 		}
 		return msg.channel.send('There is nothing playing.');
-	}
+	}  
 
 	return undefined;
 });

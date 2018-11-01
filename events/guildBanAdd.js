@@ -1,3 +1,7 @@
+const snek = require('snekfetch')
+const axios = require('axios')
+const request = require('request')
+const querystring = require('querystring');
 module.exports = (Bot, message, member, user, guild) => {
-  console.log(`${member.user} has been banned from ${member.guild}!`)
+    user.send("You've gotten banned! oof.")
 };

@@ -1,4 +1,5 @@
 dependencies:
+  axios: 0.18.0
   better-sqlite-pool: 0.1.2
   canvas: github.com/Automattic/node-canvas/92b192447e9b9ae98da0f801e4e34afdd1dc1ef8
   canvas-constructor: 1.1.2
@@ -7,7 +8,7 @@ dependencies:
   csurf: 1.9.0
   discord.js: 11.4.2
   ejs: 2.6.1
-  enmap: 4.3.2
+  enmap: 4.3.3
   express: 4.16.4
   express-flash: 0.0.2
   express-layout: 0.1.0
@@ -20,18 +21,19 @@ dependencies:
   moment-duration-format: 2.2.2
   multer: 1.4.1
   node-gyp: 3.8.0
-  node-opus: 0.3.0
+  node-opus: 0.3.1
   pug: 2.0.3
+  query-string: 6.2.0
   random-quote: 0.0.1
   request: 2.88.0
   simple-youtube-api: 5.0.2
   snekfetch: 4.0.4
   sqlite: 3.0.0
-  sqlite3: 4.0.2
+  sqlite3: 4.0.3
   stringify-object: 3.3.0
   time: 0.12.0
   windows-build-tools: 5.0.0
-  ytdl-core: 0.26.1
+  ytdl-core: 0.26.3
 packages:
   /@types/babel-types/7.0.4:
     dev: false
@@ -187,6 +189,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ReZxvNHIOv88FlT7rxcXIIC0fPt4KZqZbOlivyWtXLt8ESx84zd3kMC6iK5jVeS2qt+g7ftS7ye4fi06X5rtRQ==
+  /axios/0.18.0:
+    dependencies:
+      follow-redirects: 1.5.9
+      is-buffer: 1.1.6
+    dev: false
+    resolution:
+      integrity: sha1-MtU+SFHv3AoRmTts0AB4nXDAUQI=
+      tarball: 'http://registry.npmjs.org/axios/-/axios-0.18.0.tgz'
   /babel-runtime/6.26.0:
     dependencies:
       core-js: 2.5.7
@@ -227,20 +237,20 @@ packages:
   /better-sqlite-pool/0.1.2:
     dependencies:
       '@types/better-sqlite3': 3.1.3
-      better-sqlite3: 4.1.4
+      better-sqlite3: 4.2.0
     dev: false
     engines:
       node: '>=6.0'
     resolution:
       integrity: sha512-IYyZ5mdPYPgHx3cA/9Xk2yE8mBPHzAmDiRVBIGAs8oYweBm+/HpkCkPE5QTb1WDkK7XzJJHBtpWUTWsF1Mt/0g==
-  /better-sqlite3/4.1.4:
+  /better-sqlite3/4.2.0:
     dependencies:
       bindings: 1.3.0
       integer: 1.0.7
     dev: false
     requiresBuild: true
     resolution:
-      integrity: sha512-Y11HN9PQ9YUeKFMrmiHyOLAKElk2ATJzBZJvuzNwTMxoS7vUEEyLnUCtcBFqViLwbomr0RQwp2MBy/ogxF50PA==
+      integrity: sha512-m6vGein6wZWexQ+yaBSHM8MSoSJ9hU2pO+4Ap5THwS0WSro/RKDvwO9a5m1WYvMTh74snnPTVMWeUmiB12UitQ==
   /bindings/1.2.1:
     dev: false
     resolution:
@@ -256,6 +266,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-e8tQYnZodmebYDWGH7KMRvtzKXaJHx3BbilrgZCfvyLUYdKpK1t5PSPmpkny/SgiTSCnjfLW7v5rlONXVFkQEA==
+      tarball: 'http://registry.npmjs.org/bl/-/bl-1.2.2.tgz'
   /block-stream/0.0.9:
     dependencies:
       inherits: 2.0.3
@@ -457,10 +468,10 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-brWl9y6vOB1xYPZcpZde3N9zDByXTosAeMDo4p1wzo6UMOX4vumB+TP1RZ76sfE6Md68Q0NJSrE/gbezd4Ul+w==
-  /commander/2.18.0:
+  /commander/2.19.0:
     dev: false
     resolution:
-      integrity: sha512-6CYPa+JP2ftfRU2qkDK+UTVeQYosOg/2GbcjIcKPHfinyOLPVGXu/ovN86RP49Re5ndJK1N0kuiidFFuepc4ZQ==
+      integrity: sha512-6tvAOO+D6OENvRAh524Dh9jcfKTYDQAqvqezbCW82xj5X0pSrcpxtvRKHLG0yBY6SD7PSDrJaj+0AiOcKVd1Xg==
   /commander/2.8.1:
     dependencies:
       graceful-readlink: 1.0.1
@@ -551,13 +562,13 @@ packages:
     dev: false
     resolution:
       integrity: sha1-naHpgOO9RPxck79as9ozeNheRms=
-  /cross-fetch/2.2.2:
+  /cross-fetch/2.2.3:
     dependencies:
       node-fetch: 2.1.2
       whatwg-fetch: 2.0.4
     dev: false
     resolution:
-      integrity: sha1-pH/09/xxLauo9qaVoRyUhEDUVyM=
+      integrity: sha512-PrWWNH3yL2NYIb/7WF/5vFG3DCQiXDOVf8k3ijatbrtnwNuhMWLC7YF7uqf53tbTFDzHIUD8oITw4Bxt8ST3Nw==
   /csrf/3.0.6:
     dependencies:
       rndm: 1.2.0
@@ -605,6 +616,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
+  /debug/3.1.0:
+    dependencies:
+      ms: 2.0.0
+    dev: false
+    resolution:
+      integrity: sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
   /debug/3.2.6:
     dependencies:
       ms: 2.1.1
@@ -617,6 +634,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
+  /decode-uri-component/0.2.0:
+    dev: false
+    engines:
+      node: '>=0.10'
+    resolution:
+      integrity: sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
   /decompress-tar/4.1.1:
     dependencies:
       file-type: 5.2.0
@@ -633,7 +656,7 @@ packages:
       file-type: 6.2.0
       is-stream: 1.1.0
       seek-bzip: 1.0.5
-      unbzip2-stream: 1.3.0
+      unbzip2-stream: 1.3.1
     dev: false
     engines:
       node: '>=4'
@@ -789,14 +812,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-1MkrZNvWTKCaigbn+W15elq2BB/L22nqrSY5DKlo3X6+vclJm8Bb5djXJBmEX6fS3+zCh/F4VBK5Z2KxJt4s2Q==
-  /enmap/4.3.2:
+  /enmap/4.3.3:
     dependencies:
       lodash: 4.17.11
     dev: false
     peerDependencies:
       better-sqlite-pool: ^0.1.2
     resolution:
-      integrity: sha512-oGT2KFOrNYn34Pt1Sr8P9We3Hx2y9CxEtRCVVupqhxxBM5RwA7AE+IuYv3lvRMCyJI/f4/13rRqvdkeAf+tFIA==
+      integrity: sha512-Ru+Y04eY2SbGCD3lAHjPfrwvK2kOpfFrVP0gnDigjAQXj2xmQXsJ32sC/kcRaxwI7WqWq/0OtlEw29fMLBD2Xw==
   /error-ex/1.3.2:
     dependencies:
       is-arrayish: 0.2.1
@@ -925,6 +948,7 @@ packages:
     dev: false
     resolution:
       integrity: sha1-wFNHeBfIa1HaqFPIHgWbcz0CNhQ=
+      tarball: 'http://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-1.1.0.tgz'
   /fast-json-stable-stringify/2.0.0:
     dev: false
     resolution:
@@ -954,6 +978,7 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-JXoHg4TR24CHvESdEH1SpSZyuek=
+      tarball: 'http://registry.npmjs.org/file-type/-/file-type-3.9.0.tgz'
   /file-type/5.2.0:
     dev: false
     engines:
@@ -990,6 +1015,14 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-ay6YIrGizgpgq2TWEOzK1TyyTQ8=
+  /follow-redirects/1.5.9:
+    dependencies:
+      debug: 3.1.0
+    dev: false
+    engines:
+      node: '>=4.0'
+    resolution:
+      integrity: sha512-Bh65EZI/RU8nx0wbYF9shkFZlqLP+6WT/5FnA3cE/djNSuKNHJEinGGZgu/cQEkeeb2GdFOgenAmn8qaqYke2w==
   /forever-agent/0.6.1:
     dev: false
     resolution:
@@ -1036,7 +1069,7 @@ packages:
       integrity: sha512-EglNDLRpmaTWiD/qraZn6HREAEAHJcJOmxNEYwq6xeMKnVMAy3GUcFB+wXt2C6k4CNvB/mP1y/U3dzvKKj5OtQ==
   /fs-minipass/1.2.5:
     dependencies:
-      minipass: 2.3.4
+      minipass: 2.3.5
     dev: false
     resolution:
       integrity: sha512-JhBl0skXjUPCFH7x6x61gQxrKyXsxB5gcgePLZCwfyCGGsTISMoIeObbrvVeP6Xmyaudw4TT43qV2Gz+iyd2oQ==
@@ -1091,6 +1124,7 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-Xzj5PzRgCWZu4BUKBUFn+Rvdld4=
+      tarball: 'http://registry.npmjs.org/get-stream/-/get-stream-2.3.1.tgz'
   /getpass/0.1.7:
     dependencies:
       assert-plus: 1.0.0
@@ -1255,7 +1289,7 @@ packages:
     dependencies:
       assert-plus: 1.0.0
       jsprim: 1.4.1
-      sshpk: 1.15.1
+      sshpk: 1.15.2
     dev: false
     engines:
       node: '>=0.8'
@@ -1588,6 +1622,7 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
+      tarball: 'http://registry.npmjs.org/media-typer/-/media-typer-0.3.0.tgz'
   /mem/3.0.1:
     dependencies:
       mimic-fn: 1.2.0
@@ -1672,19 +1707,19 @@ packages:
     resolution:
       integrity: sha1-o1AIsg9BOD7sH7kU9M1d95omQoQ=
       tarball: 'http://registry.npmjs.org/minimist/-/minimist-1.2.0.tgz'
-  /minipass/2.3.4:
+  /minipass/2.3.5:
     dependencies:
       safe-buffer: 5.1.2
       yallist: 3.0.2
     dev: false
     resolution:
-      integrity: sha512-mlouk1OHlaUE8Odt1drMtG1bAJA4ZA6B/ehysgV0LUIrDHdKgo1KorZq3pK0b/7Z7LJIQ12MNM6aC+Tn6lUZ5w==
-  /minizlib/1.1.0:
+      integrity: sha512-Gi1W4k059gyRbyVUZQ4mEqLm0YIUiGYfvxhF6SIlk3ui1WVxMTGfGdQ2SInh3PDrRTVvPKgULkpJtT4RH10+VA==
+  /minizlib/1.1.1:
     dependencies:
-      minipass: 2.3.4
+      minipass: 2.3.5
     dev: false
     resolution:
-      integrity: sha512-4T6Ur/GctZ27nHfpt9THOdRZNgyJ9FZchYO1ceg5S8Q3DNLCKYy44nCZzgCJgcvx2UM8czmqak5BCxJMrq37lA==
+      integrity: sha512-TrfjCjk4jLhcJyGMYymBH6oTXcWjYbUAXTHDbtnWHjZC25h0cdajHuPE1zxb4DVmu8crfh+HwH/WMuyLG0nHBg==
   /mkdirp/0.5.1:
     dependencies:
       minimist: 0.0.8
@@ -1781,10 +1816,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-3g8lYefrRRzvGeSowdJKAKyks8oUpLEd/DyPV4eMhVlhJ0aNaZqIrNUIPuEWWTAoPqyFkfGrM67MC69baqn6vA==
-  /node-opus/0.3.0:
+  /node-opus/0.3.1:
     dependencies:
       bindings: 1.2.1
-      commander: 2.18.0
+      commander: 2.19.0
       nan: 2.11.1
     dev: false
     engines:
@@ -1793,7 +1828,7 @@ packages:
       ogg-packet: 1.0.0
     requiresBuild: true
     resolution:
-      integrity: sha512-Hih2TCi/vQUY4D9PBiATT6fluJSjMJPLBfCNgAxJx03v6jT+UlVmXUKR62RXYWyijhXNghsFJMyeBe7MBm3cmQ==
+      integrity: sha512-1Cb8OvHhdDspVfeKMjEgbedJabyE1Ib6OcN2BMEsRCU7FIsciuBpOErcie3y0qTf83nclPAY+kBU3Oj+U+oRlQ==
   /node-pre-gyp/0.10.3:
     dependencies:
       detect-libc: 1.0.3
@@ -1816,11 +1851,11 @@ packages:
       mkdirp: 0.5.1
       needle: 2.2.4
       nopt: 4.0.1
-      npm-packlist: 1.1.11
+      npm-packlist: 1.1.12
       npmlog: 4.1.2
       rc: 1.2.8
       rimraf: 2.6.2
-      semver: 5.5.1
+      semver: 5.6.0
       tar: 4.4.6
     dev: false
     hasBin: true
@@ -1854,13 +1889,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-m/e6jgWu8/v5niCUKQi9qQl8QdeEduFA96xHDDzFGqly0OOjI7c+60KM/2sppfnUU9JJagf+zs+yGhqSOFj71g==
-  /npm-packlist/1.1.11:
-    dependencies:
-      ignore-walk: 3.0.1
-      npm-bundled: 1.0.5
-    dev: false
-    resolution:
-      integrity: sha512-CxKlZ24urLkJk+9kCm48RTQ7L4hsmgSVzEk0TLGPzzyuFxD7VNgy5Sl24tOLMzQv773a/NeJ1ce1DKeacqffEA==
   /npm-packlist/1.1.12:
     dependencies:
       ignore-walk: 3.0.1
@@ -2027,6 +2055,7 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-7RQaasBDqEnqWISY59yosVMw6Qw=
+      tarball: 'http://registry.npmjs.org/pify/-/pify-2.3.0.tgz'
   /pify/3.0.0:
     dev: false
     engines:
@@ -2205,6 +2234,15 @@ packages:
       node: '>=0.6'
     resolution:
       integrity: sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
+  /query-string/6.2.0:
+    dependencies:
+      decode-uri-component: 0.2.0
+      strict-uri-encode: 2.0.0
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-5wupExkIt8RYL4h/FE+WTg3JHk62e6fFPWtAZA9J5IWK1PfTfKkMS93HBUHcFpeYi9KsY5pFbh+ldvEyaz5MyA==
   /random-bytes/1.0.0:
     dev: false
     engines:
@@ -2412,11 +2450,6 @@ packages:
     resolution:
       integrity: sha1-myzl094C0XxgEq0yaqa00M9U+U8=
       tarball: 'http://registry.npmjs.org/semver/-/semver-5.3.0.tgz'
-  /semver/5.5.1:
-    dev: false
-    hasBin: true
-    resolution:
-      integrity: sha512-PqpAxfrEhlSUWge8dwIp4tZnQ25DIOthpiaHNIthsjEFQD6EvqUKUDM7L8O2rShkFccYo1VjJR0coWfNkCubRw==
   /semver/5.6.0:
     dev: false
     hasBin: true
@@ -2471,7 +2504,7 @@ packages:
       integrity: sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
   /simple-youtube-api/5.0.2:
     dependencies:
-      cross-fetch: 2.2.2
+      cross-fetch: 2.2.3
       iso8601-duration: 1.1.6
     dev: false
     resolution:
@@ -2507,7 +2540,7 @@ packages:
   /spdx-correct/3.0.2:
     dependencies:
       spdx-expression-parse: 3.0.0
-      spdx-license-ids: 3.0.1
+      spdx-license-ids: 3.0.2
     dev: false
     resolution:
       integrity: sha512-q9hedtzyXHr5S0A1vEPoK/7l8NpfkFYTq6iCY+Pno2ZbdZR6WexZFtqeVGkGxW3TEJMN914Z55EnAGMmenlIQQ==
@@ -2518,14 +2551,14 @@ packages:
   /spdx-expression-parse/3.0.0:
     dependencies:
       spdx-exceptions: 2.2.0
-      spdx-license-ids: 3.0.1
+      spdx-license-ids: 3.0.2
     dev: false
     resolution:
       integrity: sha512-Yg6D3XpRD4kkOmTpdgbUiEJFKghJH03fiC1OPll5h/0sO6neh2jqRDVHOQ4o/LMea0tgCkbMgea5ip/e+MkWyg==
-  /spdx-license-ids/3.0.1:
+  /spdx-license-ids/3.0.2:
     dev: false
     resolution:
-      integrity: sha512-TfOfPcYGBB5sDuPn3deByxPhmfegAhpDYKSOXZQN81Oyrrif8ZCodOLzK3AesELnCx03kikhyDwh0pfvvQvF8w==
+      integrity: sha512-qky9CVt0lVIECkEsYbNILVnPvycuEBkXoMFLRWsREkomQLevYhtRKC+R91a5TOAQ3bCMjikRwhyaRqj1VYatYg==
   /speedometer/0.1.4:
     dev: false
     resolution:
@@ -2539,13 +2572,13 @@ packages:
       integrity: sha1-PxFQiiWt384hejBCqdMAwxk7lv8=
   /sqlite/3.0.0:
     dependencies:
-      sqlite3: 4.0.2
+      sqlite3: 4.0.3
     dev: false
     optionalDependencies:
       sql-template-strings: 2.2.2
     resolution:
       integrity: sha512-bGCCf43nnIcVHRXuQfSv0C9khuKvHGlbzzL0dFeXgnsjRS1Vqjs0yUaLPf3Qt+0j0AKUggEmBumGNDNOl4feig==
-  /sqlite3/4.0.2:
+  /sqlite3/4.0.3:
     dependencies:
       nan: 2.10.0
       node-pre-gyp: 0.10.3
@@ -2553,8 +2586,8 @@ packages:
     dev: false
     requiresBuild: true
     resolution:
-      integrity: sha512-51ferIRwYOhzUEtogqOa/y9supADlAht98bF/gbIi6WkzRJX6Yioldxbzj1MV4yV+LgdKD/kkHwFTeFXOG4htA==
-  /sshpk/1.15.1:
+      integrity: sha512-nuWqc26oiJZXyY5MEz+rQbiki1BTibnXsy8Kqo7QD/ut6eksOWi6uWwFMbdnFNME7CZyplWdDXj2fbdQVaEfuA==
+  /sshpk/1.15.2:
     dependencies:
       asn1: 0.2.4
       assert-plus: 1.0.0
@@ -2570,7 +2603,7 @@ packages:
       node: '>=0.10.0'
     hasBin: true
     resolution:
-      integrity: sha512-mSdgNUaidk+dRU5MhYtN9zebdzF2iG0cNPWy8HG+W8y+fT1JnSkh0fzzpjOa0L7P8i1Rscz38t0h4gPcKz43xA==
+      integrity: sha512-Ra/OXQtuh0/enyl4ETZAfTaeksa6BXks5ZcjpSUNrjBr0DvrJKX+1fsKDPpT9TBXgHAFsa4510aNVgI8g/+SzA==
   /statuses/1.4.0:
     dev: false
     engines:
@@ -2589,6 +2622,12 @@ packages:
       node: '>=0.8.0'
     resolution:
       integrity: sha1-gIudDlb8Jz2Am6VzOOkpkZoanxo=
+  /strict-uri-encode/2.0.0:
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha1-ucczDHBChi9rFC3CdLvMWGbONUY=
   /string-width/1.0.2:
     dependencies:
       code-point-at: 1.1.0
@@ -2708,8 +2747,8 @@ packages:
     dependencies:
       chownr: 1.1.1
       fs-minipass: 1.2.5
-      minipass: 2.3.4
-      minizlib: 1.1.0
+      minipass: 2.3.5
+      minizlib: 1.1.1
       mkdirp: 0.5.1
       safe-buffer: 5.1.2
       yallist: 3.0.2
@@ -2856,13 +2895,13 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-KPHm4VL5dDXKz01UuEd88Df+KzynaohSL9fBh096KWAxSKZQDI2uBrVqtvRM4rwrIrRRKsdLNML/lnaaVSRioA==
-  /unbzip2-stream/1.3.0:
+  /unbzip2-stream/1.3.1:
     dependencies:
       buffer: 3.6.0
       through: 2.3.8
     dev: false
     resolution:
-      integrity: sha512-kE2WkurNnPUMcryNioS68DDbhoPB8Qxsd8btHSj+sd5Pjh2GsjmeHLzMSqV9HHziAo8FzVxVCJl9ZYhk7yY1pA==
+      integrity: sha512-fIZnvdjblYs7Cru/xC6tCPVhz7JkYcVQQkePwMLyQELzYTds2Xn8QefPVnvdVhhZqubxNA1cASXEH5wcK0Bucw==
   /universalify/0.1.2:
     dev: false
     engines:
@@ -2987,6 +3026,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ZGh/8kF9rrRNffkLFV4AzhvooEclrOH0xaugmqGsIfFgOE/pIz4fMc4Ef+5HSQqTEug2S9JZIWDR47duDSLfaA==
+      tarball: 'http://registry.npmjs.org/ws/-/ws-4.1.0.tgz'
   /x-xss-protection/1.1.0:
     dev: false
     resolution:
@@ -3026,7 +3066,7 @@ packages:
     dev: false
     resolution:
       integrity: sha1-x+sXyT4RLLEIb6bY5R+wZnt5pfk=
-  /ytdl-core/0.26.1:
+  /ytdl-core/0.26.3:
     dependencies:
       html-entities: 1.2.1
       m3u8stream: 0.4.2
@@ -3036,7 +3076,7 @@ packages:
     engines:
       node: '>=6'
     resolution:
-      integrity: sha512-p6mZQRI704Tl/yZoYB3j1rSJj7sSKSLJ567FUUbRkqNhmAXgASIERjROBzo9eYwrV/ZNbZ0+jSG6kvK3MASf2Q==
+      integrity: sha512-KD0SLFqVNhH8N4Ie+qdusqfFmyX7SB6+y+S1MCI7vY9zS/wjRxH/zgoYRUwpP+YfXaiWzBPVIzy/5wK5asVUXQ==
   github.com/Automattic/node-canvas/92b192447e9b9ae98da0f801e4e34afdd1dc1ef8:
     dependencies:
       nan: 2.11.1
@@ -3047,13 +3087,13 @@ packages:
     name: canvas
     requiresBuild: true
     resolution:
-      registry: 'https://registry.npmjs.org/'
       tarball: 'https://codeload.github.com/Automattic/node-canvas/tar.gz/92b192447e9b9ae98da0f801e4e34afdd1dc1ef8'
     version: 2.0.0-alpha.12
 registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
+  axios: ^0.18.0
   better-sqlite-pool: ^0.1.2
   canvas: 'github:Automattic/node-canvas#92b192447e9b9ae98da0f801e4e34afdd1dc1ef8'
   canvas-constructor: ^1.1.2
@@ -3077,6 +3117,7 @@ specifiers:
   node-gyp: ^3.8.0
   node-opus: ^0.3.0
   pug: ^2.0.3
+  query-string: ^6.2.0
   random-quote: ^0.0.1
   request: ^2.88.0
   simple-youtube-api: ^5.0.2
@@ -3086,4 +3127,4 @@ specifiers:
   stringify-object: ^3.3.0
   time: ^0.12.0
   windows-build-tools: ^5.0.0
-  ytdl-core: ^0.26.1
+  ytdl-core: ^0.26.3
